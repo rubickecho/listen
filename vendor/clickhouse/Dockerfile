@@ -1,7 +1,8 @@
 FROM clickhouse/clickhouse-server:latest
 
 # Install envsubst
-RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y gettext-base gosu && rm -rf /var/lib/apt/lists/*
 
 # Create necessary directories
 RUN mkdir -p /var/log/clickhouse-server \

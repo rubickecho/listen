@@ -9,6 +9,10 @@ export function setupWebSocket() {
   ws.onmessage = (event) => {
     try {
       const data: PriceUpdate = JSON.parse(event.data);
+      const whitelist = ["AI Rig Complex", 'arc', 'ARC'];
+      if (whitelist.includes(data.name)) {
+        console.log("Received price update:", data);
+      }
       updateTokenData(data);
     } catch (error) {
       console.error("Error parsing message:", error);
